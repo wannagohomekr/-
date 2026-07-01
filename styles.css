@@ -76,7 +76,7 @@ body {
 }
 
 .header-container {
-    max-width: 1600px;
+    max-width: 1850px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -226,7 +226,7 @@ body {
 
 /* Layouts */
 .app-main {
-    max-width: 1600px;
+    max-width: 1850px;
     margin: 1.5rem auto;
     padding: 0 1.5rem;
 }
@@ -563,7 +563,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus {
 }
 
 .timetable-days-grid .day-card {
-    flex: 1 1 calc(25% - 1.125rem); /* Default 4 cards per row, but empty spaces stretch remaining cards */
+    flex: 1 1 calc(25% - 1.125rem); /* 4 cards on first row, 3 cards on second row */
     min-width: 280px;
 }
 

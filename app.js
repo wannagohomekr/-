@@ -62,6 +62,2145 @@ function getStudentColorByName(name) {
 }
 
 // Sample Data corresponding to the handwriting image
+const BACKUP_DEFAULT_DATA = {
+    "students": [
+        {
+            "id": "s1",
+            "name": "이은지",
+            "type": "집중",
+            "colorIndex": 12,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수",
+                        "토",
+                        "일"
+                    ],
+                    "startHour": 9,
+                    "endHour": 14,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s2",
+            "name": "이은혜",
+            "type": "집중",
+            "colorIndex": 8,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "수"
+                    ],
+                    "startHour": 9,
+                    "endHour": 12,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "화",
+                        "일"
+                    ],
+                    "startHour": 9,
+                    "endHour": 14,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "토"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s3",
+            "name": "강혜서",
+            "type": "집중",
+            "colorIndex": 9,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수"
+                    ],
+                    "startHour": 12,
+                    "endHour": 17,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "목"
+                    ],
+                    "startHour": 9,
+                    "endHour": 13,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s4",
+            "name": "정수효",
+            "type": "집중",
+            "colorIndex": 2,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수"
+                    ],
+                    "startHour": 14,
+                    "endHour": 18,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "목"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 13,
+                    "endHour": 17,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s5",
+            "name": "황도면",
+            "type": "집중",
+            "colorIndex": 1,
+            "schedules": [
+                {
+                    "days": [
+                        "월"
+                    ],
+                    "startHour": 9,
+                    "endHour": 16,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "화",
+                        "수"
+                    ],
+                    "startHour": 9,
+                    "endHour": 15,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "토"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s6",
+            "name": "황준서",
+            "type": "집중",
+            "colorIndex": 11,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "목"
+                    ],
+                    "startHour": 9,
+                    "endHour": 12,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "토"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 13,
+                    "endHour": 18,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s7",
+            "name": "노우찬",
+            "type": "학기중",
+            "colorIndex": 3,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "수"
+                    ],
+                    "startHour": 14,
+                    "endHour": 22,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "화",
+                        "목"
+                    ],
+                    "startHour": 14,
+                    "endHour": 18,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "토"
+                    ],
+                    "startHour": 9,
+                    "endHour": 12,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s8",
+            "name": "김보민",
+            "type": "학기중",
+            "colorIndex": 1,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수",
+                        "목"
+                    ],
+                    "startHour": 9,
+                    "endHour": 15,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s9",
+            "name": "조재영",
+            "type": "학기중",
+            "colorIndex": 13,
+            "schedules": [],
+            "isVariable": true
+        },
+        {
+            "id": "s10",
+            "name": "명하은",
+            "type": "학기중",
+            "colorIndex": 10,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수",
+                        "목"
+                    ],
+                    "startHour": 18,
+                    "endHour": 22,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 9,
+                    "endHour": 18,
+                    "hasMeal": true
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s11",
+            "name": "박하민",
+            "type": "학기중",
+            "colorIndex": 10,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "수"
+                    ],
+                    "startHour": 12,
+                    "endHour": 17,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "화",
+                        "목"
+                    ],
+                    "startHour": 13,
+                    "endHour": 22,
+                    "hasMeal": true
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s12",
+            "name": "정유리",
+            "type": "학기중",
+            "colorIndex": 10,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수",
+                        "목"
+                    ],
+                    "startHour": 16,
+                    "endHour": 22,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s13",
+            "name": "윤철헌",
+            "type": "학기중",
+            "colorIndex": 5,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "화",
+                        "수",
+                        "목"
+                    ],
+                    "startHour": 17,
+                    "endHour": 22,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 15,
+                    "endHour": 18,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        },
+        {
+            "id": "s14",
+            "name": "정지수",
+            "type": "학기중",
+            "colorIndex": 5,
+            "schedules": [
+                {
+                    "days": [
+                        "월",
+                        "목"
+                    ],
+                    "startHour": 10,
+                    "endHour": 16,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "화"
+                    ],
+                    "startHour": 10,
+                    "endHour": 17,
+                    "hasMeal": false
+                },
+                {
+                    "days": [
+                        "일"
+                    ],
+                    "startHour": 12,
+                    "endHour": 18,
+                    "hasMeal": false
+                }
+            ],
+            "isVariable": false
+        }
+    ],
+    "exceptions": {
+        "2026-07-01": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-02": [
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 13,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-03": [],
+        "2026-07-04": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-05": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 13,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 13,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 15,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 18,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-06": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-07": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 17,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-08": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-09": [
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 13,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-10": [],
+        "2026-07-11": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-12": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 13,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 13,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 15,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 18,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-13": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 16,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-14": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 17,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-15": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-16": [
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 13,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-17": [],
+        "2026-07-18": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-19": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 15,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 18,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-20": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 16,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-21": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 17,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-22": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-23": [
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 13,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-24": [],
+        "2026-07-25": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-26": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 13,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 15,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 18,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-27": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 16,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-28": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 17,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-29": [
+            {
+                "studentName": "이은지",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 14,
+                "hasMeal": false
+            },
+            {
+                "studentName": "이은혜",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "황도면",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 12,
+                "endHour": 17,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-30": [
+            {
+                "studentName": "강혜서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 13,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정수효",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 18,
+                "hasMeal": true
+            },
+            {
+                "studentName": "황준서",
+                "type": "집중",
+                "startHour": 9,
+                "endHour": 12,
+                "hasMeal": false
+            },
+            {
+                "studentName": "노우찬",
+                "type": "학기중",
+                "startHour": 14,
+                "endHour": 18,
+                "hasMeal": false
+            },
+            {
+                "studentName": "김보민",
+                "type": "학기중",
+                "startHour": 9,
+                "endHour": 15,
+                "hasMeal": false
+            },
+            {
+                "studentName": "명하은",
+                "type": "학기중",
+                "startHour": 18,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "박하민",
+                "type": "학기중",
+                "startHour": 13,
+                "endHour": 22,
+                "hasMeal": true
+            },
+            {
+                "studentName": "정유리",
+                "type": "학기중",
+                "startHour": 16,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "윤철헌",
+                "type": "학기중",
+                "startHour": 17,
+                "endHour": 22,
+                "hasMeal": false
+            },
+            {
+                "studentName": "정지수",
+                "type": "학기중",
+                "startHour": 10,
+                "endHour": 16,
+                "hasMeal": false
+            }
+        ],
+        "2026-07-31": []
+    }
+};
+
 const SAMPLE_TEXT = `(집중) 홍길동 월화수토일 9-14
 (집중) 김철수 월수 9-12, 화일 9-14, 토 9-18 (식사)
 (집중) 이영희 월화수 12-17, 목 9-13, 일 9-18 (식사)
@@ -130,6 +2269,7 @@ const btnCloseLoginModal = document.getElementById('btn-close-login-modal');
 const btnLoginCancel = document.getElementById('btn-login-cancel');
 const btnLoginSubmit = document.getElementById('btn-login-submit');
 const loginPassword = document.getElementById('login-password');
+const loginUsername = document.getElementById('login-username');
 
 const btnChangePassword = document.getElementById('btn-change-password');
 const passwordModal = document.getElementById('password-modal');
@@ -140,12 +2280,32 @@ const newPassword = document.getElementById('new-password');
 const newPasswordConfirm = document.getElementById('new-password-confirm');
 
 // Load data (Try server first, then fallback to LocalStorage)
+// Helper to check if Supabase is reachable under 1.2s timeout (prevents hang on secure networks)
+async function isSupabaseReachable() {
+    if (!supabaseClient) return false;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1200);
+    try {
+        // Fetch to Supabase base URL (GET with no-cors so it doesn't fail on CORS)
+        await fetch(SUPABASE_URL, { method: 'GET', mode: 'no-cors', signal: controller.signal });
+        clearTimeout(timeoutId);
+        return true;
+    } catch (e) {
+        clearTimeout(timeoutId);
+        console.warn("Supabase is unreachable (secure network or offline):", e.message);
+        return false;
+    }
+}
+
 async function loadData() {
     // Check Auth State first
     isAdmin = sessionStorage.getItem('work_study_admin_logged_in') === 'true';
     applyAuthorizationUI();
 
-    if (supabaseClient) {
+    let loadedSuccessfully = false;
+
+    // Only attempt Supabase fetch if it is reachable (prevents blocking)
+    if (supabaseClient && await isSupabaseReachable()) {
         try {
             const { data, error } = await supabaseClient
                 .from('timetable_store')
@@ -159,18 +2319,22 @@ async function loadData() {
                 students = data.students || [];
                 exceptions = data.exceptions || {};
                 
-                // If cloud database is empty, load sample data silently
-                if (students.length === 0 && !localStorage.getItem('work_study_populated')) {
-                    parseInputTextSilent();
-                    localStorage.setItem('work_study_populated', 'true');
-                } else {
-                    updateUI();
+                // If cloud database is empty, load backup data
+                if (students.length === 0) {
+                    students = BACKUP_DEFAULT_DATA.students || [];
+                    exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
+                    saveData();
                 }
-                return;
+                loadedSuccessfully = true;
             }
         } catch (e) {
-            console.error('Supabase load failed, falling back:', e);
+            console.error('Supabase load failed with exception:', e);
         }
+    }
+
+    if (loadedSuccessfully) {
+        updateUI();
+        return;
     }
 
     // Local Server Fallback
@@ -182,10 +2346,11 @@ async function loadData() {
                 students = data.students || [];
                 exceptions = data.exceptions || {};
                 if (students.length === 0) {
-                    parseInputTextSilent();
-                } else {
-                    updateUI();
+                    students = BACKUP_DEFAULT_DATA.students || [];
+                    exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
+                    saveData();
                 }
+                updateUI();
                 return;
             }
         } catch (err) {
@@ -194,16 +2359,34 @@ async function loadData() {
     }
     
     // Pure Local Storage Fallback
-    const saved = localStorage.getItem('work_study_students');
-    const savedExceptions = localStorage.getItem('work_study_exceptions');
-    students = saved ? JSON.parse(saved) : [];
-    exceptions = savedExceptions ? JSON.parse(savedExceptions) : {};
+    let saved = localStorage.getItem('work_study_students');
+    let savedExceptions = localStorage.getItem('work_study_exceptions');
+    
+    // Automatically purge old mock data (like 홍길동) to force load the correct reconstructed dataset
+    if (saved && saved.includes('홍길동')) {
+        localStorage.removeItem('work_study_students');
+        localStorage.removeItem('work_study_exceptions');
+        localStorage.removeItem('work_study_populated');
+        saved = null;
+        savedExceptions = null;
+        console.log("Purged legacy sample data.");
+    }
+    
+    try {
+        students = saved ? JSON.parse(saved) : [];
+        exceptions = savedExceptions ? JSON.parse(savedExceptions) : {};
+    } catch(e) {
+        students = [];
+        exceptions = {};
+    }
     
     if (students.length === 0) {
-        parseInputTextSilent();
-    } else {
-        updateUI();
+        students = BACKUP_DEFAULT_DATA.students || [];
+        exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
+        saveData();
     }
+    
+    updateUI();
 }
 
 // Silent parsing of SAMPLE_TEXT to pre-populate empty database
@@ -318,9 +2501,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     
     const btnApplyWeeklyToMonth = document.getElementById('btn-apply-weekly-to-month');
+    const btnApplyWeeklyToMonthWeeklyTab = document.getElementById('btn-apply-weekly-to-month-weekly-tab');
     const btnClearMonth = document.getElementById('btn-clear-month');
     if (btnApplyWeeklyToMonth) {
         btnApplyWeeklyToMonth.addEventListener('click', applyWeeklySchedulesToMonth);
+    }
+    if (btnApplyWeeklyToMonthWeeklyTab) {
+        btnApplyWeeklyToMonthWeeklyTab.addEventListener('click', applyWeeklySchedulesToMonth);
     }
     if (btnClearMonth) {
         btnClearMonth.addEventListener('click', clearMonthlySchedules);
@@ -2588,12 +4775,20 @@ function clearMonthlySchedules() {
 // Update UI elements visibility based on Admin vs Guest permission
 function applyAuthorizationUI() {
     const body = document.body;
+    const adminElements = document.querySelectorAll('.admin-only');
+
     if (isAdmin) {
         body.classList.remove('guest-mode');
+        adminElements.forEach(el => {
+            el.style.display = ''; // Restore default CSS display properties (block, grid, flex, etc.)
+        });
         if (btnAdminLogin) btnAdminLogin.style.display = 'none';
         if (btnAdminLogout) btnAdminLogout.style.display = 'inline-flex';
     } else {
         body.classList.add('guest-mode');
+        adminElements.forEach(el => {
+            el.style.display = 'none'; // Explicitly hide in guest mode
+        });
         if (btnAdminLogin) btnAdminLogin.style.display = 'inline-flex';
         if (btnAdminLogout) btnAdminLogout.style.display = 'none';
     }
@@ -2601,10 +4796,11 @@ function applyAuthorizationUI() {
 
 // Open admin login modal
 function openLoginModal() {
+    if (loginUsername) loginUsername.value = '';
     if (loginPassword) loginPassword.value = '';
     if (loginModal) loginModal.classList.add('show');
     setTimeout(() => {
-        if (loginPassword) loginPassword.focus();
+        if (loginUsername) loginUsername.focus();
     }, 150);
 }
 
@@ -2615,10 +4811,23 @@ function closeLoginModal() {
 
 // Handle login submit
 async function handleLogin() {
-    if (!loginPassword) return;
+    if (!loginUsername || !loginPassword) return;
+    const username = loginUsername.value.trim();
     const pwd = loginPassword.value.trim();
+    
+    if (!username) {
+        alert('아이디를 입력하세요.');
+        loginUsername.focus();
+        return;
+    }
+    if (username !== '서신근장관리자') {
+        alert('존재하지 않는 아이디이거나 관리자 계정이 아닙니다.');
+        loginUsername.select();
+        return;
+    }
     if (!pwd) {
         alert('비밀번호를 입력하세요.');
+        loginPassword.focus();
         return;
     }
 
@@ -2763,6 +4972,14 @@ function initAuthEvents() {
     if (btnCloseLoginModal) btnCloseLoginModal.addEventListener('click', closeLoginModal);
     if (btnLoginCancel) btnLoginCancel.addEventListener('click', closeLoginModal);
     if (btnLoginSubmit) btnLoginSubmit.addEventListener('click', handleLogin);
+
+    if (loginUsername) {
+        loginUsername.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if (loginPassword) loginPassword.focus();
+            }
+        });
+    }
 
     if (loginPassword) {
         loginPassword.addEventListener('keypress', (e) => {
