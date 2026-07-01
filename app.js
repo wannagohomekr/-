@@ -192,7 +192,7 @@ const BACKUP_DEFAULT_DATA = {
         },
         {
             "id": "s5",
-            "name": "황도면",
+            "name": "황도연",
             "type": "집중",
             "colorIndex": 1,
             "schedules": [
@@ -491,7 +491,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -601,7 +601,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": true
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 18,
@@ -868,7 +868,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -1006,7 +1006,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": true
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 18,
@@ -1115,7 +1115,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 16,
@@ -1194,7 +1194,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -1280,7 +1280,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -1411,7 +1411,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": true
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 18,
@@ -1492,7 +1492,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 16,
@@ -1578,7 +1578,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -1664,7 +1664,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -1795,7 +1795,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": true
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 18,
@@ -1897,7 +1897,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 16,
@@ -1983,7 +1983,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -2076,7 +2076,7 @@ const BACKUP_DEFAULT_DATA = {
                 "hasMeal": false
             },
             {
-                "studentName": "황도면",
+                "studentName": "황도연",
                 "type": "집중",
                 "startHour": 9,
                 "endHour": 15,
@@ -2494,6 +2494,7 @@ window.addEventListener('DOMContentLoaded', () => {
     initModalEvents();
     initStudentModalEvents();
     initAuthEvents();
+    initCurrentWorkersEvents();
     
     const btnImportLocal = document.getElementById('btn-import-local');
     if (btnImportLocal) {
@@ -4997,6 +4998,130 @@ function initAuthEvents() {
             if (e.key === 'Enter') handlePasswordChange();
         });
     }
+}
+
+// ----------------------------------------------------
+// CURRENT WORKERS LOGIC
+// ----------------------------------------------------
+function initCurrentWorkersEvents() {
+    const btnShowCurrentWorkers = document.getElementById('btn-show-current-workers');
+    const currentWorkersModal = document.getElementById('current-workers-modal');
+    const btnCloseCurrentWorkersModal = document.getElementById('btn-close-current-workers-modal');
+    const btnCloseCurrentWorkersModalFooter = document.getElementById('btn-close-current-workers-modal-footer');
+    const btnRefreshCurrentWorkers = document.getElementById('btn-refresh-current-workers');
+
+    if (btnShowCurrentWorkers) {
+        btnShowCurrentWorkers.addEventListener('click', showCurrentWorkers);
+    }
+    
+    const closeFn = () => {
+        if (currentWorkersModal) currentWorkersModal.classList.remove('show');
+    };
+
+    if (btnCloseCurrentWorkersModal) btnCloseCurrentWorkersModal.addEventListener('click', closeFn);
+    if (btnCloseCurrentWorkersModalFooter) btnCloseCurrentWorkersModalFooter.addEventListener('click', closeFn);
+    
+    if (btnRefreshCurrentWorkers) {
+        btnRefreshCurrentWorkers.addEventListener('click', showCurrentWorkers);
+    }
+}
+
+function showCurrentWorkers() {
+    const currentWorkersModal = document.getElementById('current-workers-modal');
+    const currentWorkersTime = document.getElementById('current-workers-time');
+    const currentWorkersList = document.getElementById('current-workers-list');
+
+    if (!currentWorkersModal || !currentWorkersTime || !currentWorkersList) return;
+
+    // Get current local system time
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    const dateStr = `${year}-${month}-${day}`;
+    currentWorkersTime.textContent = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+    // Get shifts for today
+    const todayShifts = getSchedulesForDate(dateStr);
+    const currentHour = now.getHours();
+
+    // Filter shifts currently in progress
+    const activeShifts = todayShifts.filter(shift => {
+        return shift.startHour <= currentHour && currentHour < shift.endHour;
+    });
+
+    currentWorkersList.innerHTML = '';
+
+    if (activeShifts.length === 0) {
+        currentWorkersList.innerHTML = `
+            <div style="text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+                현재 근무 중인 장학생이 없습니다.
+            </div>
+        `;
+    } else {
+        activeShifts.forEach(shift => {
+            // Find student color index
+            const student = students.find(s => s.name === shift.studentName);
+            const colorIdx = student ? student.colorIndex : 1;
+            
+            const item = document.createElement('div');
+            item.className = 'worker-item';
+            item.style.display = 'flex';
+            item.style.justifyContent = 'space-between';
+            item.style.alignItems = 'center';
+            item.style.padding = '0.75rem 1rem';
+            item.style.backgroundColor = '#1e293b';
+            item.style.borderRadius = '0.5rem';
+            item.style.border = '1px solid var(--border-color)';
+
+            const left = document.createElement('div');
+            left.style.display = 'flex';
+            left.style.alignItems = 'center';
+            left.style.gap = '0.75rem';
+
+            const dot = document.createElement('span');
+            dot.className = 'legend-dot';
+            dot.style.backgroundColor = `var(--student-color-${colorIdx})`;
+            dot.style.width = '12px';
+            dot.style.height = '12px';
+            dot.style.borderRadius = '50%';
+            dot.style.display = 'inline-block';
+
+            const name = document.createElement('span');
+            name.style.fontWeight = '700';
+            name.style.color = 'var(--text-primary)';
+            name.textContent = shift.studentName;
+
+            const badge = document.createElement('span');
+            badge.className = 'badge';
+            badge.style.fontSize = '0.7rem';
+            badge.style.padding = '0.1rem 0.35rem';
+            badge.style.backgroundColor = shift.type === '집중' ? '#7c3aed' : '#0284c7';
+            badge.textContent = `${shift.type}근로`;
+
+            left.appendChild(dot);
+            left.appendChild(name);
+            left.appendChild(badge);
+
+            const right = document.createElement('div');
+            right.style.fontSize = '0.85rem';
+            right.style.color = 'var(--text-secondary)';
+            right.style.fontWeight = '500';
+            
+            const startStr = String(shift.startHour).padStart(2, '0') + ':00';
+            const endStr = String(shift.endHour).padStart(2, '0') + ':00';
+            right.textContent = `${startStr} ~ ${endStr}` + (shift.hasMeal ? ' (식사차감)' : '');
+
+            item.appendChild(left);
+            item.appendChild(right);
+            currentWorkersList.appendChild(item);
+        });
+    }
+
+    currentWorkersModal.classList.add('show');
 }
 
 

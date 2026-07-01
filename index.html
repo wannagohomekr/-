@@ -60,9 +60,13 @@
 
     <main class="app-main">
         <div class="view-control-bar">
-            <div class="tab-buttons">
+            <div class="tab-buttons" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                 <button id="tab-weekly" class="tab-btn active">📅 주간 고정 시간표</button>
                 <button id="tab-monthly" class="tab-btn">🗓️ 월간 달력 시간표</button>
+                <button id="btn-show-current-workers" class="btn btn-accent btn-sm" style="margin-left: 0.75rem; display: inline-flex; align-items: center; gap: 0.35rem;" title="현재 날짜/시간 기준으로 근무 중인 장학생을 확인합니다.">
+                    <span class="pulse-dot"></span>
+                    현재 근무자 확인
+                </button>
             </div>
             <div class="month-selector-area" id="month-selector-area" style="display: none;">
                 <select id="select-year">
@@ -654,6 +658,29 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" id="btn-password-cancel">취소</button>
                 <button class="btn btn-primary" id="btn-password-submit">변경 완료</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Workers Modal -->
+    <div class="modal-backdrop" id="current-workers-modal">
+        <div class="modal-content" style="width: 450px;">
+            <div class="modal-header">
+                <h3>🟢 실시간 근무자 현황</h3>
+                <button class="modal-close-btn" id="btn-close-current-workers-modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding-top: 1rem;">
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                    <span>기준 시각: <strong id="current-workers-time">-</strong></span>
+                    <button class="btn btn-secondary btn-xs" id="btn-refresh-current-workers" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;">🔄 새로고침</button>
+                </p>
+                
+                <div id="current-workers-list" class="current-workers-list" style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-close-current-workers-modal-footer">닫기</button>
             </div>
         </div>
     </div>
