@@ -18,6 +18,13 @@ const getStorageKey = (baseKey) => {
     return `${baseKey}_${path}`;
 };
 
+// Check if running on a local server environment (prioritize local data.json over cloud DB)
+const isLocalServer = window.location.protocol.startsWith('http') && 
+    (window.location.hostname === 'localhost' || 
+     window.location.hostname === '127.0.0.1' || 
+     window.location.hostname.startsWith('192.168.') || 
+     window.location.hostname.startsWith('10.'));
+
 // Global State
 let students = [];
 let exceptions = {}; // exceptions = { "YYYY-MM-DD": [ { studentName, type, startHour, endHour, hasMeal }, ... ] }
@@ -2318,8 +2325,8 @@ async function loadData() {
 
     let loadedSuccessfully = false;
 
-    // Only attempt Supabase fetch if it is reachable (prevents blocking)
-    if (supabaseClient && await isSupabaseReachable()) {
+    // Only attempt Supabase fetch if NOT running on a local server and reachable (prevents blocking)
+    if (!isLocalServer && supabaseClient && await isSupabaseReachable()) {
         try {
             const { data, error } = await supabaseClient
                 .from('timetable_store')
@@ -2337,7 +2344,6 @@ async function loadData() {
                 if (students.length === 0) {
                     students = BACKUP_DEFAULT_DATA.students || [];
                     exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
-                    saveData();
                 }
                 loadedSuccessfully = true;
             }
@@ -2362,7 +2368,6 @@ async function loadData() {
                 if (students.length === 0) {
                     students = BACKUP_DEFAULT_DATA.students || [];
                     exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
-                    saveData();
                 }
                 updateUI();
                 return;
@@ -2397,7 +2402,6 @@ async function loadData() {
     if (students.length === 0) {
         students = BACKUP_DEFAULT_DATA.students || [];
         exceptions = BACKUP_DEFAULT_DATA.exceptions || {};
-        saveData();
     }
     
     updateUI();
@@ -2466,8 +2470,11 @@ async function saveData() {
     localStorage.setItem(getStorageKey('work_study_students'), JSON.stringify(students));
     localStorage.setItem(getStorageKey('work_study_exceptions'), JSON.stringify(exceptions));
 
-    // 2. Save to Supabase if connected
-    if (supabaseClient) {
+    // Only administrators are allowed to write to the cloud database or local server files
+    if (!isAdmin) return;
+
+    // 2. Save to Supabase if connected and NOT running on a local server
+    if (!isLocalServer && supabaseClient) {
         try {
             const { error } = await supabaseClient
                 .from('timetable_store')
@@ -4851,7 +4858,7 @@ async function handleLogin() {
     const correctHash = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'; // SHA-256 for '1234'
     const legacyHash = 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'; // Legacy hash typo
 
-    if (supabaseClient) {
+    if (!isLocalServer && supabaseClient) {
         try {
             const { data, error } = await supabaseClient
                 .from('timetable_store')
@@ -4960,7 +4967,7 @@ async function handlePasswordChange() {
 
     const newHash = CryptoJS.SHA256(pwd).toString(CryptoJS.enc.Hex);
 
-    if (supabaseClient) {
+    if (!isLocalServer && supabaseClient) {
         try {
             const { error } = await supabaseClient
                 .from('timetable_store')
