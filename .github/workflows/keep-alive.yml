@@ -1,0 +1,27 @@
+name: Supabase Keep-Alive
+on:
+  schedule:
+    # 매일 한국 시간 오전 9시, 오후 9시 (UTC 00:00, 12:00)에 자동 실행
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # 수동으로 즉시 실행할 수 있게 설정
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase API
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/")
+          
+          echo "Supabase Response HTTP Status: $HTTP_STATUS"
+          
+          # 200번대(정상) 또는 404/openapi 응답 모두 DB 활동으로 기록됨
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 500 ]; then
+            echo "Keep-alive ping successful!"
+            exit 0
+          else
+            echo "Ping failed with status $HTTP_STATUS"
+            exit 1
+          fi
